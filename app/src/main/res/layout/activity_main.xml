@@ -3,14 +3,18 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="center"
               android:orientation="vertical"
               tools:context=".MainActivity">
 
-    <TextView
-            android:id="@+id/helloText"
-            android:layout_width="wrap_content"
-            android:layout_height="85dp"
-            android:text="@string/hello_android"
-            android:textSize="24sp"/>
+    <!-- Container for the navbar fragment -->
+    <FrameLayout
+            android:id="@+id/navbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <!-- Container for the content fragments -->
+    <FrameLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 </LinearLayout>

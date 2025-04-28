@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">RUBurgersAndroid</string>
     <string name="hello_android">Hello Android!</string>
+    <string name="sandwiches">Sandwiches</string>
+    <string name="burgers">Burgers</string>
+    <string name="beverages">Beverages</string>
+    <string name="order_history">Order History</string>
+    <string name="sides">Sides</string>
 </resources>
