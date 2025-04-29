@@ -15,6 +15,12 @@ import java.util.ArrayList;
 import model.MenuItem;
 import model.Order;
 
+/**
+ * Pop up box for the current order
+ *
+ * @author Marco Ferreira
+ * @author Sathish Kosalram
+ */
 public class OrderDialog {
     private Context context;
     private DataManager dataManager;
@@ -60,7 +66,7 @@ public class OrderDialog {
 
         builder.setPositiveButton("Close", (dialog, which) -> dialog.dismiss());
 
-        builder.setNeutralButton("Clear Order", (dialog, which) -> {
+        builder.setNeutralButton("Checkout", (dialog, which) -> {
             showClearOrderConfirmation();
         });
 
@@ -120,14 +126,14 @@ public class OrderDialog {
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Clear Order");
-        builder.setMessage("Are you sure you want to clear your entire order?");
+        builder.setTitle("Checkout");
+        builder.setMessage("Are you sure you want to checkout your entire order?");
 
-        builder.setPositiveButton("Clear", (dialog, which) -> {
-            dataManager.clearOrder();
+        builder.setPositiveButton("Checkout", (dialog, which) -> {
+            dataManager.placeOrder();
             this.dialog.dismiss();
             show();
-            Toast.makeText(context, "Order cleared", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Order placed", Toast.LENGTH_SHORT).show();
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());

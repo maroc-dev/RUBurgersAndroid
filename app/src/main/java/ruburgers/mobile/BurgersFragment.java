@@ -20,7 +20,12 @@ import java.util.ArrayList;
 import model.AddOns;
 import model.Bread;
 import model.Burger;
-
+/**
+ * Fragment class for the burger menu
+ *
+ * @author Marco Ferreira
+ * @author Sathish Kosalram
+ */
 public class BurgersFragment extends Fragment {
 
     private Spinner breadSpinner;
@@ -67,7 +72,7 @@ public class BurgersFragment extends Fragment {
         breadSpinner = view.findViewById(R.id.sandwichBreadSpinner);
         pattyAmountSpinner = view.findViewById(R.id.sandwichProteinSpinner);
         lettuceCheckbox = view.findViewById(R.id.lettuceSandwichCheckbox);
-        tomatoCheckbox = view.findViewById(R.id.tomatoeSandwichCheckbox);
+        tomatoCheckbox = view.findViewById(R.id.tomatoSandwichCheckbox);
         onionsCheckbox = view.findViewById(R.id.onionsSandwichCheckbox);
         avocadoCheckbox = view.findViewById(R.id.avacadoSandwichCheckbox);
         cheeseCheckbox = view.findViewById(R.id.cheeseSandwichCheckbox);
@@ -207,12 +212,15 @@ public class BurgersFragment extends Fragment {
 
         if (comboToggle.isChecked()) {
             navigateToComboSelection();
+            resetForm();
+            updatePriceDisplay();
         } else {
             dataManager.addOrderItem(burgerItem);
 
             Toast.makeText(getActivity(), "Burger added to order", Toast.LENGTH_SHORT).show();
 
             resetForm();
+            updatePriceDisplay();
         }
     }
 

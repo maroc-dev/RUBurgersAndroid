@@ -7,10 +7,15 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.tabs.TabLayout;
 
+/**
+ * Navigation bar fragment for the app.
+ *
+ * @author Marco Ferreira
+ * @author Sathish Kosalram
+ */
 public class NavbarFragment extends Fragment {
     private TabSelectListener tabSelectListener;
 
-    // Interface for communicating with the Activity
     public interface TabSelectListener {
         void onTabSelected(int position);
     }
@@ -21,13 +26,10 @@ public class NavbarFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the navbar layout
         View view = inflater.inflate(R.layout.navbar, container, false);
 
-        // Find the TabLayout
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
 
-        // Set up tab selection listener
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

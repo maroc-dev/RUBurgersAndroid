@@ -12,33 +12,43 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import model.Beverage;
-import model.Burger;
 import model.Combo;
 import model.Flavor;
-import model.MenuItem;
 import model.Sandwich;
 import model.Side;
 import model.Size;
 
+/**
+ * Pop up box for the combo selection
+ *
+ * @author Marco Ferreira
+ * @author Sathish Kosalram
+ */
 public class ComboSelectionDialog {
     private Context context;
     private DataManager dataManager;
     private AlertDialog dialog;
-    private Burger burgerItem;
+    private Sandwich sandwichItem;
     private ToggleButton comboToggle;
     private TextView priceTextView;
+    private String itemType;
 
     private Side selectedSide;
     private Beverage selectedDrink;
 
-    public ComboSelectionDialog(Context context, Burger burgerItem, ToggleButton comboToggle, TextView priceTextView) {
+    public ComboSelectionDialog(Context context, Sandwich sandwichItem, ToggleButton comboToggle, TextView priceTextView) {
         this.context = context;
         this.dataManager = DataManager.getInstance();
-        this.burgerItem = burgerItem;
+        this.sandwichItem = sandwichItem;
         this.comboToggle = comboToggle;
         this.priceTextView = priceTextView;
-    }
 
+        if (sandwichItem.getClass().getSimpleName().equals("Burger")) {
+            this.itemType = "Burger";
+        } else {
+            this.itemType = "Sandwich";
+        }
+    }
 
     public void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -47,20 +57,14 @@ public class ComboSelectionDialog {
         View dialogView = inflater.inflate(R.layout.combo_popup, null);
         builder.setView(dialogView);
 
-        // Get references to UI elements
         TextView descriptionText = dialogView.findViewById(R.id.comboDescriptionText);
         descriptionText.setText("Combo includes a small side (chips or apple) and a medium drink (cola, tea, or juice)");
 
-        // Side selection
         RadioGroup sideGroup = dialogView.findViewById(R.id.sideRadioGroup);
-        RadioButton chipsRadioButton = dialogView.findViewById(R.id.chipsRadioButton);
-        RadioButton appleRadioButton = dialogView.findViewById(R.id.appleRadioButton);
 
         // Drink selection
         RadioGroup drinkGroup = dialogView.findViewById(R.id.drinkRadioGroup);
-        RadioButton colaRadioButton = dialogView.findViewById(R.id.colaRadioButton);
-        RadioButton teaRadioButton = dialogView.findViewById(R.id.teaRadioButton);
-        RadioButton juiceRadioButton = dialogView.findViewById(R.id.juiceRadioButton);
+
 
         // Buttons
         Button addButton = dialogView.findViewById(R.id.addComboButton);
@@ -87,22 +91,21 @@ public class ComboSelectionDialog {
                 selectedDrink = new Beverage(Size.MEDIUM, Flavor.JUICE, 1);
             }
 
-            // Enable add button if both side and drink are selected
             enableAddButtonIfReady(addButton, sideGroup, drinkGroup);
         });
 
         addButton.setOnClickListener(v -> {
             if (selectedSide != null && selectedDrink != null) {
                 try {
-                    int quantity = burgerItem.getQuantity();
+                    int quantity = sandwichItem.getQuantity();
 
                     selectedDrink.setQuantity(quantity);
 
-                    Combo combo = new Combo(burgerItem, selectedDrink, selectedSide, quantity);
+                    Combo combo = new Combo(sandwichItem, selectedDrink, selectedSide, quantity);
 
                     dataManager.addOrderItem(combo);
 
-                    Toast.makeText(context, quantity + "x Burger combo added to order",
+                    Toast.makeText(context, quantity + "x " + itemType + " combo added to order",
                             Toast.LENGTH_SHORT).show();
 
                     dialog.dismiss();
@@ -123,7 +126,6 @@ public class ComboSelectionDialog {
         });
 
         cancelButton.setOnClickListener(v -> {
-            // Reset toggle button if canceled
             if (comboToggle != null) {
                 comboToggle.setChecked(false);
             }
@@ -132,7 +134,7 @@ public class ComboSelectionDialog {
 
         // Create and show dialog
         dialog = builder.create();
-        dialog.setCancelable(false); // Prevent dismiss on outside click
+        dialog.setCancelable(false);
         dialog.show();
     }
 

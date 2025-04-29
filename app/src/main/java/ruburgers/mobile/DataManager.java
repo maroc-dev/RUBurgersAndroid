@@ -1,23 +1,26 @@
 package ruburgers.mobile;
 
-import model.Burger;
 import model.MenuItem;
 import model.Order;
 import model.OrderManager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 
 /**
- * DataManager - A Singleton class for sharing data between Activities
- * Follows the Singleton design pattern to ensure only one instance exists
+ * The singleton design class that manages the data for the application.
+ *
+ * @author Marco Ferreira
+ * @author Sathish Kosalram
  */
 public class DataManager {
     // Static instance variable
     private static DataManager instance;
 
     private MenuItem temporaryItem;
+
+    private ArrayList<Order> orderHistory = new ArrayList<>();
+
 
 
     // Order-related fields
@@ -45,7 +48,6 @@ public class DataManager {
         return instance;
     }
 
-
     // Order-specific methods
     public void addOrderItem(MenuItem item) {
         currentOrder.addItem(item);
@@ -57,22 +59,9 @@ public class DataManager {
         updateOrderTotal();
     }
 
-    public ArrayList<MenuItem> getOrderItems() {
-        return currentOrder.getItems();
-    }
-
-    public void clearOrder() {
-        currentOrder.clearItems();
-        updateOrderTotal();
-    }
 
     public Order getCurrentOrder() {
         return currentOrder;
-    }
-
-    public void setCurrentOrder(Order order) {
-        this.currentOrder = order;
-        updateOrderTotal();
     }
 
     public void placeOrder() {
@@ -86,34 +75,9 @@ public class DataManager {
         return OrderManager.getInstance().getOrderHistory();
     }
 
-    // Updates the order total based on the current order
     private void updateOrderTotal() {
         orderTotal = currentOrder.orderTotal();
     }
 
-    // Getter methods for order totals
-    public double getSubtotal() {
-        return currentOrder.subtotal();
-    }
 
-    public double getTaxAmount() {
-        return currentOrder.taxAmount();
-    }
-
-    public double getOrderTotal() {
-        return orderTotal;
-    }
-
-    public String getOrderNumber() {
-        return currentOrder.getOrderNumber();
-    }
-
-
-    public void setTemporaryItem(MenuItem item) {
-        this.temporaryItem = item;
-    }
-
-    public MenuItem getTemporaryItem() {
-        return temporaryItem;
-    }
 }
