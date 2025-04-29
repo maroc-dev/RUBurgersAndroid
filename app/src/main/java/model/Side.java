@@ -43,10 +43,14 @@ public enum Side {
      * @return the calculated price based on size
      */
     public double getPriceBySize(Size size) {
-        return switch (size) {
-            case SMALL -> basePrice;
-            case MEDIUM -> basePrice + 0.50;
-            case LARGE -> basePrice + 1.00;
-        };
+        switch (size) {
+            case SMALL:
+                return basePrice;
+            case MEDIUM:
+                return basePrice + 0.50;
+            case LARGE:
+                return basePrice + 1.00;
+        }
+        return basePrice;
     }
 }

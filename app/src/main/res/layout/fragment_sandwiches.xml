@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:layout_width="165dp"
+                    android:layout_height="match_parent" app:srcCompat="@mipmap/sandwich" android:id="@+id/imageView2"/>
+            <TextView
+                    android:text="Sandwich Menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView" android:textSize="48sp"/>
+        </LinearLayout>
+        <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+        />
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="118dp">
+
+            <TableRow android:layout_width="match_parent" android:layout_height="104dp">
+                <TextView
+                        android:layout_width="174dp"
+                        android:layout_height="40dp"
+                        android:inputType="text"
+                        android:ems="10"
+                        android:id="@+id/editTextText2" android:text="Bread Options: " android:textSize="20sp"/>
+                <Spinner
+                        android:layout_width="220dp"
+                        android:layout_height="53dp" android:id="@+id/sandwichBreadSpinner"
+                        android:contextClickable="true"
+                        android:entries="@array/sandwich_bread_options"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="96dp">
+                <TextView
+                        android:layout_width="180dp"
+                        android:layout_height="39dp"
+                        android:inputType="text"
+                        android:ems="10"
+                        android:id="@+id/editTextText3" android:text="Sandwich Protein: " android:textSize="20sp"/>
+                <Spinner
+                        android:layout_width="220dp"
+                        android:layout_height="53dp" android:id="@+id/sandwichProteinSpinner"
+                        android:contextClickable="true"
+                        android:entries="@array/sandwich_protein_options"/>
+                <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </TableRow>
+        </TableLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="144dp"
+                        android:layout_height="65dp"
+                        android:inputType="text"
+                        android:text="Add-ons:"
+                        android:ems="10"
+                        android:id="@+id/editTextText5" android:layout_weight="1" android:textSize="20sp"/>
+                <CheckBox
+                        android:text="Lettuce"
+                        android:layout_width="128dp"
+                        android:layout_height="65dp" android:id="@+id/lettuceSandwichCheckbox"/>
+                <CheckBox
+                        android:layout_width="129dp"
+                        android:layout_height="65dp" android:id="@+id/tomatoeSandwichCheckbox" android:text="Tomatoes"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="73dp">
+                <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="70dp" android:id="@+id/onionsSandwichCheckbox" android:layout_weight="1"
+                        android:text="Onions"/>
+                <CheckBox
+                        android:layout_width="40dp"
+                        android:layout_height="69dp" android:id="@+id/avacadoSandwichCheckbox" android:layout_weight="1"
+                        android:text="Avacado"/>
+                <CheckBox
+                        android:text="Cheese"
+                        android:layout_width="25dp"
+                        android:layout_height="67dp" android:id="@+id/cheeseSandwichCheckbox" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp">
+                <TextView
+                        android:layout_width="121dp"
+                        android:layout_height="67dp"
+                        android:inputType="text"
+                        android:text="Quantity:"
+                        android:ems="10"
+                        android:id="@+id/editTextText4" android:layout_weight="1" android:textSize="20sp"/>
+                <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:ems="10"
+                        android:id="@+id/sandwichQuantity" android:layout_weight="1"
+                        android:contentDescription="How many orders do you want?" android:editable="false"
+                        android:hint="Enter quanitity here"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="21dp" android:layout_weight="1">
+                <TextView
+                        android:text="Combo meal?"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_weight="1"
+                        android:textSize="20sp"/>
+                <ToggleButton
+                        android:text="Combo meal?"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/sandwichComboMeal" android:layout_weight="1"
+                        android:textOn="yes" android:textOff="no"/>
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/sandwichCurrentPrice" android:layout_weight="1" android:editable="false"
+                    android:text="$0.00" android:textSize="24sp"/>
+            <Button
+                    android:text="View Order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/sandwichViewOrder" android:onClick="orderBurger"/>
+            <Button
+                    android:text="Add to Order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/sandwichOrderButton" android:onClick="orderBurger"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

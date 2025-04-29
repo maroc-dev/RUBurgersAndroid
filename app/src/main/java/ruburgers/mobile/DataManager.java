@@ -1,8 +1,12 @@
 package ruburgers.mobile;
 
+import model.Burger;
+import model.MenuItem;
+import model.Order;
+import model.OrderManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,21 +17,17 @@ public class DataManager {
     // Static instance variable
     private static DataManager instance;
 
-    // Private data fields to store shared information
-    private Map<String, Object> dataMap;
-    private List<String> orderItems;
+    private MenuItem temporaryItem;
+
+
+    // Order-related fields
+    private Order currentOrder;
     private double orderTotal;
-    private String customerName;
-    private String customerPhone;
 
     // Private constructor prevents direct instantiation
     private DataManager() {
-        // Initialize data structures
-        dataMap = new HashMap<>();
-        orderItems = new ArrayList<>();
+        currentOrder = new Order();
         orderTotal = 0.0;
-        customerName = "";
-        customerPhone = "";
     }
 
     /**
@@ -45,56 +45,75 @@ public class DataManager {
         return instance;
     }
 
-    // Generic methods for storing and retrieving data
-    public void setData(String key, Object value) {
-        dataMap.put(key, value);
-    }
-
-    public Object getData(String key) {
-        return dataMap.get(key);
-    }
 
     // Order-specific methods
-    public void addOrderItem(String item) {
-        orderItems.add(item);
+    public void addOrderItem(MenuItem item) {
+        currentOrder.addItem(item);
+        updateOrderTotal();
     }
 
-    public void removeOrderItem(String item) {
-        orderItems.remove(item);
+    public void removeOrderItem(MenuItem item) {
+        currentOrder.removeItem(item);
+        updateOrderTotal();
     }
 
-    public List<String> getOrderItems() {
-        return orderItems;
+    public ArrayList<MenuItem> getOrderItems() {
+        return currentOrder.getItems();
     }
 
     public void clearOrder() {
-        orderItems.clear();
-        orderTotal = 0.0;
+        currentOrder.clearItems();
+        updateOrderTotal();
     }
 
-    // Getter and setter methods for order total
+    public Order getCurrentOrder() {
+        return currentOrder;
+    }
+
+    public void setCurrentOrder(Order order) {
+        this.currentOrder = order;
+        updateOrderTotal();
+    }
+
+    public void placeOrder() {
+        OrderManager orderManager = OrderManager.getInstance();
+        orderManager.addToOrderHistory(currentOrder);
+        currentOrder = new Order();
+        updateOrderTotal();
+    }
+
+    public ArrayList<Order> getOrderHistory() {
+        return OrderManager.getInstance().getOrderHistory();
+    }
+
+    // Updates the order total based on the current order
+    private void updateOrderTotal() {
+        orderTotal = currentOrder.orderTotal();
+    }
+
+    // Getter methods for order totals
+    public double getSubtotal() {
+        return currentOrder.subtotal();
+    }
+
+    public double getTaxAmount() {
+        return currentOrder.taxAmount();
+    }
+
     public double getOrderTotal() {
         return orderTotal;
     }
 
-    public void setOrderTotal(double total) {
-        this.orderTotal = total;
+    public String getOrderNumber() {
+        return currentOrder.getOrderNumber();
     }
 
-    // Customer information methods
-    public String getCustomerName() {
-        return customerName;
+
+    public void setTemporaryItem(MenuItem item) {
+        this.temporaryItem = item;
     }
 
-    public void setCustomerName(String name) {
-        this.customerName = name;
-    }
-
-    public String getCustomerPhone() {
-        return customerPhone;
-    }
-
-    public void setCustomerPhone(String phone) {
-        this.customerPhone = phone;
+    public MenuItem getTemporaryItem() {
+        return temporaryItem;
     }
 }

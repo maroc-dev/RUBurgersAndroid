@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="burger_bread_options">
+        <item>Brioche</item>
+        <item>Wheat-bread</item>
+        <item>Pretzel</item>
+    </string-array>
+
+    <string-array name="burger_patty_amount">
+        <item>Single</item>
+        <item>Double</item>
+    </string-array>
+
+    <string-array name="sandwich_bread_options">
+        <item>Brioche</item>
+        <item>Wheat-bread</item>
+        <item>Pretzel</item>
+        <item>Bagel</item>
+        <item>Sourdough</item>
+    </string-array>
+
+    <string-array name="sandwich_protein_options">
+        <item>Roast Beef</item>
+        <item>Salmon</item>
+        <item>Chicken</item>
+    </string-array>
+</resources>

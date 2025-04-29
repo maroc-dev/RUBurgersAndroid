@@ -34,15 +34,12 @@ public class MainActivity extends AppCompatActivity implements NavbarFragment.Ta
     private void loadFragment(int position) {
         Fragment selectedFragment;
 
-        // Select the appropriate fragment based on position
         switch (position) {
             case 0: // Burgers
                 selectedFragment = new BurgersFragment();
                 break;
             case 1: // Sandwiches
-                selectedFragment = new BurgersFragment();
-
-//                selectedFragment = new SandwichesFragment();
+                selectedFragment = new SandwichesFragment();
                 break;
             case 2: // Beverages
                 selectedFragment = new BurgersFragment();
@@ -69,5 +66,15 @@ public class MainActivity extends AppCompatActivity implements NavbarFragment.Ta
                 .replace(R.id.content_container, selectedFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
+    }
+
+
+
+    public void navigateToComboSelection() {
+//        // Replace current fragment with ComboSelectionFragment
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.fragmentContainer, new ComboSelectionFragment())
+//                .addToBackStack(null)
+//                .commit();
     }
 }
