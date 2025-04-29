@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/beveragesTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/beverages"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+    <TextView
+            android:id="@+id/currentBeveragePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price_0_00"
+            android:textSize="18sp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/beveragesTitleTextView"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp" />
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/currentBeveragePrice"
+            android:layout_above="@+id/viewOrderButton"
+            android:layout_marginBottom="8dp">
+
+        <GridLayout
+                android:id="@+id/beveragesGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp" />
+    </ScrollView>
+
+    <Button
+            android:id="@+id/viewOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/view_order"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp" />
+
+</RelativeLayout>

@@ -82,7 +82,6 @@ public class BurgersFragment extends Fragment {
         viewOrderButton = view.findViewById(R.id.sandwichViewOrder);
         addToOrderButton = view.findViewById(R.id.sandwichOrderButton);
 
-        // Set default quantity
         quantityEditText.setText("1");
     }
 

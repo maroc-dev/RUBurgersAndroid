@@ -44,9 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavbarFragment.Ta
                 selectedFragment = new SandwichesFragment();
                 break;
             case 2: // Beverages
-                selectedFragment = new BurgersFragment();
-
-//                selectedFragment = new BeveragesFragment();
+                selectedFragment = new BeveragesFragment();
                 break;
             case 3: // Sides
 

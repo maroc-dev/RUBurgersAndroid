@@ -139,7 +139,6 @@ public class ComboSelectionDialog {
     }
 
     private void enableAddButtonIfReady(Button addButton, RadioGroup sideGroup, RadioGroup drinkGroup) {
-        // Enable add button only when both selections are made
         boolean sideSelected = sideGroup.getCheckedRadioButtonId() != -1;
         boolean drinkSelected = drinkGroup.getCheckedRadioButtonId() != -1;
         addButton.setEnabled(sideSelected && drinkSelected);
