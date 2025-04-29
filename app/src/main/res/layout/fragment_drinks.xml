@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/white"
+        tools:context=".DrinksFragment">
+
+    <!-- Drinks RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/drinkRecyclerView"
+            android:layout_width="368dp"
+            android:layout_height="471dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_drink"/>
+
+    <!-- Quantity Input -->
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantity:"
+                android:textSize="18sp" />
+
+        <EditText
+                android:id="@+id/drinkQuantityEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="1"
+                android:layout_marginStart="16dp"
+                android:minWidth="80dp" />
+    </LinearLayout>
+
+    <!-- Price Text -->
+    <TextView
+            android:id="@+id/drinkCurrentPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:textSize="24sp"
+            android:layout_marginTop="8dp" />
+
+    <!-- Add to Order Button -->
+    <Button
+            android:id="@+id/drinkAddToOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add to Order"
+            android:layout_marginTop="8dp" />
+
+    <!-- View Order Button -->
+    <Button
+            android:id="@+id/drinkViewOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Order"
+            android:layout_marginTop="8dp" />
+
+</LinearLayout>

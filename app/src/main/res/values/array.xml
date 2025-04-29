@@ -24,4 +24,28 @@
         <item>Salmon</item>
         <item>Chicken</item>
     </string-array>
+
+    <string-array name="drink_sizes">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+    <string-array name="drink_flavors">
+        <item>Cola</item>
+        <item>Lemonade</item>
+        <item>Root Beer</item>
+        <item>Tea</item>
+        <item>Sprite</item>
+        <item>Cherry</item>
+        <item>Juice</item>
+        <item>Blue Raspberry</item>
+        <item>Mango</item>
+        <item>Strawberry</item>
+        <item>Peach</item>
+        <item>Watermelon</item>
+        <item>Lime</item>
+        <item>Vanilla</item>
+        <item>Pineapple</item>
+    </string-array>
 </resources>
